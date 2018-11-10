@@ -1,0 +1,236 @@
+multichoice question test
+
+what do you want to do?
+
+user comes to the home page 
+	
+	Login Tab : drop down as a Student OR as a Admin or Tabs Display
+		forgot password 
+		confirmation mail
+
+	Payment Option if tests are Paid
+
+	Student Login:
+
+			Options : Select Subject
+					  	Select Time Duration 15 mins, 30 mins etc..
+					  		Time Counter
+
+					  	Number of questions per Test as per Duration
+
+					  	Go Back Next Option
+					  	
+					  	One Question per Page Multiple Question per Page
+					  	
+					  	Number of Options 4,5 etc.
+
+						Display score at the end of the test				  	
+
+						send score by email
+
+						store the student data for 1 year 
+
+
+
+	Admin Login:
+
+			Options:	Select Subject
+							Select Test Time Duration
+								ask user to set number of options for entire test
+
+								Opens Form
+									Post question ( Image, Numbers , Text)
+										Edit Question
+										choose Question
+									Post Options ( Image, Numbers , Text)
+										Edit Options
+										choose Options ( Drop down  Menu)
+									Post Answer
+										Edit Answer
+										Choose Answer (Drop Down Menu)
+									Set Test Select Automatically 
+									
+										Question, Options, answers selected automatically	
+
+										Randomize the Option sequence 
+	
+	Question can have many answers 
+	
+	Question has many options 
+
+	answer belongs to Many options 
+
+	answer belongs to Many Questions
+
+
+Tables : Relationship:
+
+	1. Question Table
+	2. Option Table ( list of options)
+	3. Answer Table
+	4. Subject
+	5. Test
+	6. choice ( Student selected Option) 
+	7. Exam
+	8. User
+	9. Standard
+
+	One User belongs to One Standard
+	One Standard has Many Users
+
+	One Standard has Many Exams
+	One Exam belongs to One Standard
+			
+	One Exam has many Subjects
+	One Subject belongs to one Exam
+	
+	One Subject has Many Tests
+	One Test belongs to One Subject
+	
+	One Test has many questions
+	One Question belongs to One Test
+	
+	One Question has many options
+	One Option belongs to one questions
+
+	One Question has one choice
+	One choise belongs to one question
+
+
+	Question -> Option Table ( Pool of Options: list of options)
+					Select 3 options from the pool randomly
+				Answer
+					Select particular Answer to the particular question from answer Table ( Answer Tab in the form submission)
+
+				- for each question Fetch 3 options and 1 answer	
+					- Randomize the (option and Answer) order before displaying on the page
+
+Capital of maharashtra,mumbai,pune,nashik,nagpur
+Add 2 + 5,7,4,6,1
+
+
+
+Questopn Table
+ID | TestID|Description | Status|Marks
+1  | 1|Cpital ... | Active | 5
+2  | 1|Add 2 + 7  | Active | 1
+
+Options
+ID | Value
+1 | Mumbai
+2 | Pune
+3 | Nashik
+4 | Nagpur
+5 | 7
+6   4
+7    6
+8    1
+
+Question_OPtions
+ID | QID | OID | Answer | Result
+1     1     1  | True   |  5
+2     1     2  | false  | -1
+3     1     3  | false  | -1
+4     1     4  | false  | -1
+5     2     5  | true   | 1
+6     2     6  | false  | -1
+7     2     7  | false  | -1
+8     2     8  | false  | -1
+
+choice
+ID|UserID|Ques_Opt_ID|score 
+1|888|4|-1
+2|888|5|1
+3|123|1|5
+3|123|7|-1
+
+Test_User ( Score will come from Choice Table)
+ID|Test_ID|User_ID|Score
+1|1|888|0
+1|1|123|4
+
+Test
+ID|SubjID|Name|Timing|Default_Question_Marks|Default_Negative_Marking
+1|  1|    5th Math Final| 30 mins | 2 |0
+
+Subject
+ID|Exam_ID|Name
+1	2		maths
+
+Exam
+ID|Standard_ID|Name
+1|1|CET
+2|2|final
+3|2|unit
+4|1|prelim
+5|1|SSC
+
+User
+ID |Name|Email|PWD|
+888	amod	@	123
+123|ajinkya
+
+Standard_Users
+ID|Standard_ID|User_ID
+
+Standard
+ID|Name
+1|10th
+2|5th
+
+-------------------------------------------------------------------------------------------------------
+
+---------------------------------------CONTROLLER------------------------------------------------------
+
+	1. Question Table
+	2. Option Table ( list of options)
+	3. Answer Table
+	4. Subject
+	5. Test
+	6. choice ( Student selected Option) 
+	7. Exam
+	8. User
+	9. Standard
+
+
+1. UserController/Model
+		- Name
+		- email
+		- pwd
+2. Auth Controller/Model
+		- LoginController
+		- RegistrationController		
+
+3. 	QuestionController/Model	
+		- create Question
+		- Post Question
+		- store Question
+
+4.  OptionController/Model		
+		- create 
+		- Post 
+		- store
+
+5.	ChoiceController/Model	
+		-Post
+		-Store
+
+6.  TestController/Model
+		- Create
+		- Post
+		- Store
+
+7.  SubjectController/Model
+		- Create
+		- Post
+		- Store 		
+
+8. 	ExamController/Model
+		-Create
+		-Post
+		-Store
+
+9. 	StandardController/Model
+		-Create
+		-Post
+		-Store				
