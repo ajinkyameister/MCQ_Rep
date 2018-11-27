@@ -35,13 +35,15 @@ class ResellerController extends Controller
      */
     public function store(Request $request,Reseller $reseller)
     {
-        dd($request->name);
+        // dd($request->name);
         $reseller->create([
             'name'=>$request->name,
             'phone_number'=>$request->phone_number,
             'address'=>$request->address,
             'pan_card'=>$request->pan_card,
         ]);
+    
+        return(" reseller created");
     }
 
     /**
