@@ -85,15 +85,17 @@ new Vue({
 	methods:{
 
 		formSubmit()	{
-			// alert(this.$data);
+
+			// alert("hi");
+
 			axios.post('/resellers',{
 
 				name:this.name,
 				phone_number:this.phone_number,
 				address:this.address,
-				pan_card:this.pan_card
+				pan_card:this.pan_card,
 
-			}).then(response=>console.log(response.data));
+			}).then(response=>console.log(response));
 
 			this.closeModal();
 		},
