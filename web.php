@@ -25,7 +25,4 @@ Route::get('/reseller/create',function(){
 	return view('MCQAddResellerForm');
 });
 
-Route::post('/resellers',function(){
-
-	dd("axios passed") ;
-});//
+Route::post('/resellers','ResellerController@store');//
