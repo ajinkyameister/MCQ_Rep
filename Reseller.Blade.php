@@ -22,9 +22,8 @@
 
 				</header>
 				<section class="modal-card-body">
-					
-					<form method="POST" action="/resellers" @submit.prevent="formSubmit()">
 
+					<form method="POST" action="/resellers" @submit.prevent="formSubmit">
 						{{csrf_field()}}
 
 						<label> Name:</label>
